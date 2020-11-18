@@ -1,7 +1,8 @@
 import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
+import 'package:best_flutter_ui_templates/src/views/ui_view/area_list_view.dart';
+
 import 'package:best_flutter_ui_templates/src/views/ui_view/rectangle_card.dart';
 import 'package:best_flutter_ui_templates/src/views/ui_view/glass_view.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/mediterranesn_diet_view.dart';
 import 'package:best_flutter_ui_templates/src/views/ui_view/title_view.dart';
 import 'package:best_flutter_ui_templates/src/logic/utils/fintness_app_theme.dart';
 import 'package:best_flutter_ui_templates/src/views/my_diary/meals_list_view.dart';
@@ -93,6 +94,38 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     //   ),
     // );
 
+    listViews.add(
+      GlassView(
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                  parent: widget.animationController,
+                  curve: Interval((1 / count) * 8, 1.0,
+                      curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController),
+    );
+
+    listViews.add(
+      TitleView(
+        titleTxt: 'Nuevo',
+        subTxt: 'more',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve:
+                Interval((1 / count) * 4, 1.0, curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      AreaListView(
+        mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+                parent: widget.animationController,
+                curve: Interval((1 / count) * 5, 1.0,
+                    curve: Curves.fastOutSlowIn))),
+        mainScreenAnimationController: widget.animationController,
+      ),
+    );
     // listViews.add(
     //   MealsListView(
     //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -126,15 +159,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     //     mainScreenAnimationController: widget.animationController,
     //   ),
     // );
-    listViews.add(
-      GlassView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController,
-                  curve: Interval((1 / count) * 8, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController),
-    );
   }
 
   Future<bool> getData() async {

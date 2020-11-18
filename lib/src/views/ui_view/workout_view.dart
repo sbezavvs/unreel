@@ -47,7 +47,7 @@ class WorkoutView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Next workout',
+                        'Veritasium',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: FitnessAppTheme.fontName,
@@ -60,7 +60,7 @@ class WorkoutView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          'Legs Toning and\nGlutes Workout at Home',
+                          'La Universidad Nacional: Desde el aire',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: FitnessAppTheme.fontName,

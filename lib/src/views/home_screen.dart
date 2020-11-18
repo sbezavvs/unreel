@@ -106,7 +106,8 @@ class _UnreelHomeScreenState extends State<HomeScreen>
                   return;
                 }
                 setState(() {
-                  tabBody = InviteFriend();
+                  tabBody =
+                      InviteFriend(animationController: animationController);
                 });
               });
             }

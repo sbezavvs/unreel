@@ -1,3 +1,4 @@
+import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
 import 'package:best_flutter_ui_templates/src/views/ui_view/area_list_view.dart';
 import 'package:best_flutter_ui_templates/src/views/ui_view/running_view.dart';
 import 'package:best_flutter_ui_templates/src/views/ui_view/title_view.dart';
@@ -61,7 +62,7 @@ class _TrainingScreenState extends State<TrainingScreen>
     listViews.add(
       TitleView(
         titleTxt: 'Recomendado',
-        subTxt: 'Details',
+        subTxt: 'Ver todo',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -79,20 +80,20 @@ class _TrainingScreenState extends State<TrainingScreen>
         animationController: widget.animationController,
       ),
     );
-    listViews.add(
-      RunningView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve:
-                Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
+    // listViews.add(
+    //   RunningView(
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController,
+    //         curve:
+    //             Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
 
     listViews.add(
       TitleView(
         titleTxt: 'Categorías',
-        subTxt: 'more',
+        subTxt: 'Ver todas',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -121,7 +122,7 @@ class _TrainingScreenState extends State<TrainingScreen>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: FitnessAppTheme.background,
+      color: AppTheme.dark_grey,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
@@ -214,7 +215,7 @@ class _TrainingScreenState extends State<TrainingScreen>
                                     fontWeight: FontWeight.w700,
                                     fontSize: 22 + 6 - 6 * topBarOpacity,
                                     letterSpacing: 1.2,
-                                    color: FitnessAppTheme.darkerText,
+                                    color: AppTheme.nearlyWhite,
                                   ),
                                 ),
                               ),

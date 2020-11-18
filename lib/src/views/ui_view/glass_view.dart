@@ -50,7 +50,7 @@ class GlassView extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     left: 68, bottom: 12, right: 16, top: 12),
                                 child: Text(
-                                  'Esto es una prueba de una nota, o notificación.',
+                                  'Esto es un demo de una nota, o notificación: Recuerda tomar awa',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,
@@ -67,11 +67,11 @@ class GlassView extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        top: -12,
+                        top: 0,
                         left: 0,
                         child: SizedBox(
-                          width: 80,
-                          height: 80,
+                          width: 70,
+                          height: 70,
                           child: Image.asset("assets/home/glass.png"),
                         ),
                       )
