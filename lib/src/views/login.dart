@@ -1,5 +1,5 @@
-import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
-import 'package:best_flutter_ui_templates/src/views/home_screen.dart';
+import 'package:Unreel/src/logic/utils/app_theme.dart';
+import 'package:Unreel/src/views/main_screen.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -68,7 +68,7 @@ class _Login extends State<Login> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => HomeScreen()));
+                                      builder: (context) => MainScreen()));
                             },
                             child: Center(
                               child: Padding(

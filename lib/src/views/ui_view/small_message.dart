@@ -1,7 +1,7 @@
-import 'package:best_flutter_ui_templates/main.dart';
+import 'package:Unreel/main.dart';
 import 'package:flutter/material.dart';
 
-import '../../../src/logic/utils/fintness_app_theme.dart';
+import '../../logic/utils/fintness_app_theme.dart';
 
 class GlassView extends StatelessWidget {
   final AnimationController animationController;
@@ -50,7 +50,7 @@ class GlassView extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     left: 68, bottom: 12, right: 16, top: 12),
                                 child: Text(
-                                  'Esto es un demo de una nota, o notificación: Recuerda tomar awa',
+                                  'Esto es un demo de una nota, o notificación: Recuerda tomar agua',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,

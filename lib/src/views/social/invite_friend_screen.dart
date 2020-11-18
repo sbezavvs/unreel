@@ -1,18 +1,18 @@
-import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
-import 'package:best_flutter_ui_templates/src/logic/utils/fintness_app_theme.dart';
+import 'package:Unreel/src/logic/utils/app_theme.dart';
+import 'package:Unreel/src/logic/utils/fintness_app_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:share/share.dart';
 
-class InviteFriend extends StatefulWidget {
-  const InviteFriend({Key key, this.animationController}) : super(key: key);
+class Social extends StatefulWidget {
+  const Social({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _InviteFriendState createState() => _InviteFriendState();
+  _SocialState createState() => _SocialState();
 }
 
-class _InviteFriendState extends State<InviteFriend> {
+class _SocialState extends State<Social> {
   Animation<double> topBarAnimation;
   double topBarOpacity = 0.0;
 

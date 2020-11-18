@@ -1,22 +1,23 @@
-import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/area_list_view.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/running_view.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/title_view.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/workout_view.dart';
+import 'package:Unreel/src/logic/utils/app_theme.dart';
+import 'package:Unreel/src/views/ui_view/area_list_view.dart';
+
+import 'package:Unreel/src/views/ui_view/rectangle_card.dart';
+import 'package:Unreel/src/views/ui_view/small_message.dart';
+import 'package:Unreel/src/views/ui_view/title_view.dart';
+import 'package:Unreel/src/logic/utils/fintness_app_theme.dart';
+import 'package:Unreel/src/views/home/meals_list_view.dart';
+import 'package:Unreel/src/views/home/water_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../src/logic/utils/fintness_app_theme.dart';
-
-class TrainingScreen extends StatefulWidget {
-  const TrainingScreen({Key key, this.animationController}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _TrainingScreenState createState() => _TrainingScreenState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _TrainingScreenState extends State<TrainingScreen>
-    with TickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Animation<double> topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -57,11 +58,11 @@ class _TrainingScreenState extends State<TrainingScreen>
   }
 
   void addAllListData() {
-    const int count = 5;
+    const int count = 9;
 
     listViews.add(
       TitleView(
-        titleTxt: 'Recomendado',
+        titleTxt: 'Destacado',
         subTxt: 'Ver todo',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
@@ -72,28 +73,40 @@ class _TrainingScreenState extends State<TrainingScreen>
     );
 
     listViews.add(
-      WorkoutView(
+      RectangleCard(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+                Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
       ),
     );
     // listViews.add(
-    //   RunningView(
+    //   TitleView(
+    //     titleTxt: 'Meals today',
+    //     subTxt: 'Customize',
     //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
     //         parent: widget.animationController,
     //         curve:
-    //             Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
+    //             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
     //     animationController: widget.animationController,
     //   ),
     // );
 
     listViews.add(
+      GlassView(
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                  parent: widget.animationController,
+                  curve: Interval((1 / count) * 8, 1.0,
+                      curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController),
+    );
+
+    listViews.add(
       TitleView(
-        titleTxt: 'Categorías',
-        subTxt: 'Ver todas',
+        titleTxt: 'Nuevo',
+        subTxt: 'more',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -112,6 +125,39 @@ class _TrainingScreenState extends State<TrainingScreen>
         mainScreenAnimationController: widget.animationController,
       ),
     );
+    // listViews.add(
+    //   MealsListView(
+    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //         CurvedAnimation(
+    //             parent: widget.animationController,
+    //             curve: Interval((1 / count) * 3, 1.0,
+    //                 curve: Curves.fastOutSlowIn))),
+    //     mainScreenAnimationController: widget.animationController,
+    //   ),
+    // );
+
+    // listViews.add(
+    //   TitleView(
+    //     titleTxt: 'Water',
+    //     subTxt: 'Aqua SmartBottle',
+    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    //         parent: widget.animationController,
+    //         curve:
+    //             Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
+    //     animationController: widget.animationController,
+    //   ),
+    // );
+
+    // listViews.add(
+    //   WaterView(
+    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
+    //         CurvedAnimation(
+    //             parent: widget.animationController,
+    //             curve: Interval((1 / count) * 7, 1.0,
+    //                 curve: Curves.fastOutSlowIn))),
+    //     mainScreenAnimationController: widget.animationController,
+    //   ),
+    // );
   }
 
   Future<bool> getData() async {
@@ -178,17 +224,7 @@ class _TrainingScreenState extends State<TrainingScreen>
                     0.0, 30 * (1.0 - topBarAnimation.value), 0.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: FitnessAppTheme.white.withOpacity(topBarOpacity),
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(32.0),
-                    ),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          color: FitnessAppTheme.grey
-                              .withOpacity(0.4 * topBarOpacity),
-                          offset: const Offset(1.1, 1.1),
-                          blurRadius: 10.0),
-                    ],
+                    color: AppTheme.nearlyBlack.withOpacity(topBarOpacity),
                   ),
                   child: Column(
                     children: <Widget>[
@@ -208,7 +244,7 @@ class _TrainingScreenState extends State<TrainingScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Explorar',
+                                  'Inicio',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,

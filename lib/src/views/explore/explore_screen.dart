@@ -1,23 +1,21 @@
-import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/area_list_view.dart';
-
-import 'package:best_flutter_ui_templates/src/views/ui_view/rectangle_card.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/glass_view.dart';
-import 'package:best_flutter_ui_templates/src/views/ui_view/title_view.dart';
-import 'package:best_flutter_ui_templates/src/logic/utils/fintness_app_theme.dart';
-import 'package:best_flutter_ui_templates/src/views/my_diary/meals_list_view.dart';
-import 'package:best_flutter_ui_templates/src/views/my_diary/water_view.dart';
+import 'package:Unreel/src/logic/utils/app_theme.dart';
+import 'package:Unreel/src/views/ui_view/area_list_view.dart';
+import 'package:Unreel/src/views/ui_view/running_view.dart';
+import 'package:Unreel/src/views/ui_view/title_view.dart';
+import 'package:Unreel/src/views/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
 
-class MyDiaryScreen extends StatefulWidget {
-  const MyDiaryScreen({Key key, this.animationController}) : super(key: key);
+import '../../logic/utils/fintness_app_theme.dart';
+
+class ExploreScreen extends StatefulWidget {
+  const ExploreScreen({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _MyDiaryScreenState createState() => _MyDiaryScreenState();
+  _TrainingScreenState createState() => _TrainingScreenState();
 }
 
-class _MyDiaryScreenState extends State<MyDiaryScreen>
+class _TrainingScreenState extends State<ExploreScreen>
     with TickerProviderStateMixin {
   Animation<double> topBarAnimation;
 
@@ -59,11 +57,11 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
   }
 
   void addAllListData() {
-    const int count = 9;
+    const int count = 5;
 
     listViews.add(
       TitleView(
-        titleTxt: 'Destacado',
+        titleTxt: 'Recomendado',
         subTxt: 'Ver todo',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
@@ -74,40 +72,28 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
     );
 
     listViews.add(
-      RectangleCard(
+      WorkoutView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
-                Interval((1 / count) * 5, 1.0, curve: Curves.fastOutSlowIn))),
+                Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
       ),
     );
     // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Meals today',
-    //     subTxt: 'Customize',
+    //   RunningView(
     //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
     //         parent: widget.animationController,
     //         curve:
-    //             Interval((1 / count) * 2, 1.0, curve: Curves.fastOutSlowIn))),
+    //             Interval((1 / count) * 3, 1.0, curve: Curves.fastOutSlowIn))),
     //     animationController: widget.animationController,
     //   ),
     // );
 
     listViews.add(
-      GlassView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController,
-                  curve: Interval((1 / count) * 8, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController),
-    );
-
-    listViews.add(
       TitleView(
-        titleTxt: 'Nuevo',
-        subTxt: 'more',
+        titleTxt: 'Categorías',
+        subTxt: 'Ver todas',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve:
@@ -126,39 +112,6 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
         mainScreenAnimationController: widget.animationController,
       ),
     );
-    // listViews.add(
-    //   MealsListView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController,
-    //             curve: Interval((1 / count) * 3, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController,
-    //   ),
-    // );
-
-    // listViews.add(
-    //   TitleView(
-    //     titleTxt: 'Water',
-    //     subTxt: 'Aqua SmartBottle',
-    //     animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-    //         parent: widget.animationController,
-    //         curve:
-    //             Interval((1 / count) * 6, 1.0, curve: Curves.fastOutSlowIn))),
-    //     animationController: widget.animationController,
-    //   ),
-    // );
-
-    // listViews.add(
-    //   WaterView(
-    //     mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
-    //         CurvedAnimation(
-    //             parent: widget.animationController,
-    //             curve: Interval((1 / count) * 7, 1.0,
-    //                 curve: Curves.fastOutSlowIn))),
-    //     mainScreenAnimationController: widget.animationController,
-    //   ),
-    // );
   }
 
   Future<bool> getData() async {
@@ -225,7 +178,17 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                     0.0, 30 * (1.0 - topBarAnimation.value), 0.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppTheme.nearlyBlack.withOpacity(topBarOpacity),
+                    color: FitnessAppTheme.white.withOpacity(topBarOpacity),
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(32.0),
+                    ),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                          color: FitnessAppTheme.grey
+                              .withOpacity(0.4 * topBarOpacity),
+                          offset: const Offset(1.1, 1.1),
+                          blurRadius: 10.0),
+                    ],
                   ),
                   child: Column(
                     children: <Widget>[
@@ -245,7 +208,7 @@ class _MyDiaryScreenState extends State<MyDiaryScreen>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Inicio',
+                                  'Explorar',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,

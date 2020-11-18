@@ -1,17 +1,17 @@
-import 'package:best_flutter_ui_templates/src/logic/model/tabIcon_data.dart';
-import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
-import 'package:best_flutter_ui_templates/src/views/traning/training_screen.dart';
-import 'package:best_flutter_ui_templates/src/views/invite_friend_screen.dart';
+import 'package:Unreel/src/views/bottom_navigation_view/tabIcon_data.dart';
+import 'package:Unreel/src/logic/utils/app_theme.dart';
+import 'package:Unreel/src/views/explore/explore_screen.dart';
+import 'package:Unreel/src/views/social/invite_friend_screen.dart';
+import 'package:Unreel/src/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
-import './bottom_navigation_view/bottom_bar_view.dart';
-import './my_diary/my_diary_screen.dart';
+import 'bottom_navigation_view/bottom_bar_view.dart';
 
-class HomeScreen extends StatefulWidget {
+class MainScreen extends StatefulWidget {
   @override
-  _UnreelHomeScreenState createState() => _UnreelHomeScreenState();
+  _UnreelMainScreenState createState() => _UnreelMainScreenState();
 }
 
-class _UnreelHomeScreenState extends State<HomeScreen>
+class _UnreelMainScreenState extends State<MainScreen>
     with TickerProviderStateMixin {
   AnimationController animationController;
 
@@ -30,7 +30,7 @@ class _UnreelHomeScreenState extends State<HomeScreen>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 300), vsync: this);
-    tabBody = MyDiaryScreen(animationController: animationController);
+    tabBody = HomeScreen(animationController: animationController);
     super.initState();
   }
 
@@ -87,7 +87,7 @@ class _UnreelHomeScreenState extends State<HomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      MyDiaryScreen(animationController: animationController);
+                      HomeScreen(animationController: animationController);
                 });
               });
             } else if (index == 1) {
@@ -97,7 +97,7 @@ class _UnreelHomeScreenState extends State<HomeScreen>
                 }
                 setState(() {
                   tabBody =
-                      TrainingScreen(animationController: animationController);
+                      ExploreScreen(animationController: animationController);
                 });
               });
             } else if (index == 3) {
@@ -106,8 +106,7 @@ class _UnreelHomeScreenState extends State<HomeScreen>
                   return;
                 }
                 setState(() {
-                  tabBody =
-                      InviteFriend(animationController: animationController);
+                  tabBody = Social(animationController: animationController);
                 });
               });
             }

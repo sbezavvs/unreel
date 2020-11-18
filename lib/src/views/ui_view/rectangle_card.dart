@@ -1,5 +1,5 @@
-import 'package:best_flutter_ui_templates/src/logic/utils/app_theme.dart';
-import 'package:best_flutter_ui_templates/src/logic/utils/fintness_app_theme.dart';
+import 'package:Unreel/src/logic/utils/app_theme.dart';
+import 'package:Unreel/src/logic/utils/fintness_app_theme.dart';
 import 'package:flutter/material.dart';
 
 class RectangleCard extends StatelessWidget {

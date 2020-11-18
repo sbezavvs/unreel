@@ -1,8 +1,8 @@
-## Unreel
+# Unreel
 
 Unreel es una aplicación de Video On Demand (VOD) desarrollada en Dart y haciendo uso de Flutter. Puede ser compilada para Android y iOS.
 
-# Sobre Unreel
+## Sobre Unreel
 
 Unreel es un proyecto de la Universidad Nacional de Colombia, desarrollado por:
 
@@ -12,7 +12,7 @@ Unreel es un proyecto de la Universidad Nacional de Colombia, desarrollado por:
  - Eduar Mauricio Mendez
  - Santiago Sáenz
  
- # Documentación importante
+ ## Documentación importante
 
 Se recomienda revisar la documentación de Flutter:
 
