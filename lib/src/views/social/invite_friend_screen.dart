@@ -28,93 +28,98 @@ class _SocialState extends State<Social> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppTheme.nearlyWhite,
+      color: AppTheme.dark_grey,
       child: SafeArea(
         top: false,
         child: Scaffold(
           backgroundColor: AppTheme.dark_grey,
-          body: Column(
+          body: Stack(
             children: <Widget>[
-              Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).padding.top + 100,
-                    left: 16,
-                    right: 16),
-                child: Image.asset(
-                  'assets/images/inviteImage.png',
-                  width: 200,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(top: 8),
-                child: Text(
-                  'Invita a tus amigos.',
-                  style: TextStyle(
-                    color: AppTheme.nearlyWhite,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+              getAppBarUI(),
+              Column(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top + 100,
+                        left: 16,
+                        right: 16),
+                    child: Image.asset(
+                      'assets/images/inviteImage.png',
+                      width: 200,
+                    ),
                   ),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(top: 16),
-                child: const Text(
-                  'Nuestra aplicación está en desarrollo.\n \n Cuando agregues amigos, podrás encontrar su actividad aquí!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppTheme.nearlyWhite,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Container(
-                      width: 120,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        color: AppTheme.unreel,
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(4.0)),
+                  Container(
+                    padding: const EdgeInsets.only(top: 8),
+                    child: Text(
+                      'Invita a tus amigos.',
+                      style: TextStyle(
+                        color: AppTheme.nearlyWhite,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
-                      child: Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {
-                            Share.share(
-                                '¿Cansado de las mismas series y películas? ¡Dale una oportunidad a los creadores independientes del país! Descarga Unreel y obtén acceso gratuito durante la Beta.');
-                          },
-                          child: Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  Icons.share,
-                                  color: Colors.white,
-                                  size: 22,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Text(
-                                    'Share',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 16),
+                    child: const Text(
+                      'Nuestra aplicación está en desarrollo.\n \n Cuando agregues amigos, podrás encontrar su actividad aquí!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: AppTheme.nearlyWhite,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Container(
+                          width: 120,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            color: AppTheme.unreel,
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(4.0)),
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap: () {
+                                Share.share(
+                                    '¿Cansado de las mismas series y películas? ¡Dale una oportunidad a los creadores independientes del país! Descarga Unreel y obtén acceso gratuito durante la Beta.');
+                              },
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(
+                                      Icons.share,
                                       color: Colors.white,
+                                      size: 22,
                                     ),
-                                  ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Text(
+                                        'Share',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ],
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              )
+                  )
+                ],
+              ),
             ],
           ),
         ),

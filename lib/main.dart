@@ -1,15 +1,12 @@
-import 'dart:io';
 import 'package:Unreel/src/logic/utils/app_theme.dart';
+import 'package:Unreel/src/views/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'src/views/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -17,13 +14,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      statusBarBrightness:
-          Platform.isAndroid ? Brightness.dark : Brightness.light,
       systemNavigationBarColor: Colors.white,
-      systemNavigationBarDividerColor: Colors.grey,
-      systemNavigationBarIconBrightness: Brightness.dark,
     ));
+
+    bool _loggedIn = checkLoggedStatus();
+    Widget _initScreen = Login();
+
+    if (_loggedIn) {
+      _initScreen = MainScreen();
+    }
+
     return MaterialApp(
       title: 'Unreel',
       debugShowCheckedModeBanner: false,
@@ -32,8 +32,13 @@ class MyApp extends StatelessWidget {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.android,
       ),
-      home: Login(),
+      home: _initScreen,
     );
+  }
+
+  bool checkLoggedStatus() {
+    // TODO Firebase integration
+    return false;
   }
 }
 

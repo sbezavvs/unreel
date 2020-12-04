@@ -1,6 +1,7 @@
 import 'package:Unreel/src/views/bottom_navigation_view/tabIcon_data.dart';
 import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:Unreel/src/views/explore/explore_screen.dart';
+import 'package:Unreel/src/views/personal/personal_view.dart';
 import 'package:Unreel/src/views/social/invite_friend_screen.dart';
 import 'package:Unreel/src/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -80,14 +81,14 @@ class _UnreelMainScreenState extends State<MainScreen>
           tabIconsList: tabIconsList,
           addClick: () {},
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
+            if (index == 0) {
               animationController.reverse().then<dynamic>((data) {
                 if (!mounted) {
                   return;
                 }
                 setState(() {
-                  tabBody =
-                      HomeScreen(animationController: animationController);
+                  tabBody = HomeScreen(
+                      animationController: animationController); // Home tab
                 });
               });
             } else if (index == 1) {
@@ -96,9 +97,14 @@ class _UnreelMainScreenState extends State<MainScreen>
                   return;
                 }
                 setState(() {
-                  tabBody =
-                      ExploreScreen(animationController: animationController);
+                  tabBody = ExploreScreen(
+                      animationController: animationController); // Explore tab
                 });
+              });
+            } else if (index == 2) {
+              setState(() {
+                tabBody = PersonalView(
+                    animationController: animationController); // Personal tab
               });
             } else if (index == 3) {
               animationController.reverse().then<dynamic>((data) {
@@ -106,7 +112,8 @@ class _UnreelMainScreenState extends State<MainScreen>
                   return;
                 }
                 setState(() {
-                  tabBody = Social(animationController: animationController);
+                  tabBody = Social(
+                      animationController: animationController); // Social tab
                 });
               });
             }

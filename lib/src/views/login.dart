@@ -65,6 +65,7 @@ class _Login extends State<Login> {
                           child: InkWell(
                             onTap: () {
                               FocusScope.of(context).requestFocus(FocusNode());
+
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
