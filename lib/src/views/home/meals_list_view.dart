@@ -1,9 +1,7 @@
 import 'package:Unreel/src/logic/utils/fintness_app_theme.dart';
 import 'package:Unreel/src/logic/model/meals_list_data.dart';
-import 'package:Unreel/main.dart';
+import 'package:Unreel/src/logic/utils/utils.dart';
 import 'package:flutter/material.dart';
-
-import '../../../main.dart';
 
 class MealsListView extends StatefulWidget {
   const MealsListView(

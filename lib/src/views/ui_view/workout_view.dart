@@ -1,4 +1,4 @@
-import 'package:Unreel/main.dart';
+import 'package:Unreel/src/logic/utils/utils.dart';
 import 'package:flutter/material.dart';
 import '../../../src/logic/utils/fintness_app_theme.dart';
 

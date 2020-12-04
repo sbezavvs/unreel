@@ -1,4 +1,4 @@
-package com.example.Unreel
+package com.unreel.Unreel
 
 import io.flutter.embedding.android.FlutterActivity
 

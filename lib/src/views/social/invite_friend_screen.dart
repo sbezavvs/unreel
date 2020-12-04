@@ -1,6 +1,8 @@
 import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:Unreel/src/logic/utils/fintness_app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:Unreel/src/logic/model/auth_service.dart';
+import 'package:provider/provider.dart';
 
 import 'package:share/share.dart';
 
@@ -86,8 +88,10 @@ class _SocialState extends State<Social> {
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: () {
-                                Share.share(
-                                    '¿Cansado de las mismas series y películas? ¡Dale una oportunidad a los creadores independientes del país! Descarga Unreel y obtén acceso gratuito durante la Beta.');
+                                context.read<AuthenticationService>().signOut();
+
+                                // Share.share(
+                                //     '¿Cansado de las mismas series y películas? ¡Dale una oportunidad a los creadores independientes del país! Descarga Unreel y obtén acceso gratuito durante la Beta.');
                               },
                               child: Center(
                                 child: Row(

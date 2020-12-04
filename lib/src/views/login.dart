@@ -1,17 +1,12 @@
+import 'package:Unreel/src/logic/model/auth_service.dart';
 import 'package:Unreel/src/logic/utils/app_theme.dart';
-import 'package:Unreel/src/views/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
-class Login extends StatefulWidget {
-  @override
-  _Login createState() => _Login();
-}
-
-class _Login extends State<Login> {
-  @override
-  void initState() {
-    super.initState();
-  }
+class Login extends StatelessWidget {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,10 +61,10 @@ class _Login extends State<Login> {
                             onTap: () {
                               FocusScope.of(context).requestFocus(FocusNode());
 
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => MainScreen()));
+                              context.read<AuthenticationService>().signIn(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  );
                             },
                             child: Center(
                               child: Padding(
@@ -88,7 +83,26 @@ class _Login extends State<Login> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 50),
+                  ),
+                  Text(
+                    'Inicia con redes sociales',
+                    style: TextStyle(
+                        color: AppTheme.nearlyWhite,
+                        fontWeight: FontWeight.w400),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                  ),
+                  SignInButton(
+                    Buttons.Google,
+                    text: 'Entrar con Google',
+                    onPressed: () {
+                      context.read<AuthenticationService>().signInWithGoogle();
+                    },
+                  ),
                 ],
               ),
             ),
@@ -104,7 +118,7 @@ class _Login extends State<Login> {
       child: Column(
         children: [
           new Text(
-            'Log in or Sign up',
+            ' Inicia sesión',
             style: TextStyle(
                 color: AppTheme.nearlyWhite,
                 fontSize: 18,
@@ -121,6 +135,7 @@ class _Login extends State<Login> {
               child: Container(
                 margin: new EdgeInsets.only(left: 20),
                 child: TextField(
+                  controller: emailController,
                   keyboardType: TextInputType.emailAddress,
                   textAlign: TextAlign.left,
                   maxLines: 1,
@@ -149,6 +164,7 @@ class _Login extends State<Login> {
               child: Container(
                 margin: new EdgeInsets.only(left: 20),
                 child: TextField(
+                  controller: passwordController,
                   keyboardType: TextInputType.visiblePassword,
                   textAlign: TextAlign.left,
                   maxLines: 1,

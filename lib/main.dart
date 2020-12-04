@@ -1,55 +1,61 @@
+import 'package:Unreel/src/logic/model/auth_service.dart';
 import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:Unreel/src/views/main_screen.dart';
+import 'package:Unreel/src/views/login.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'src/views/login.dart';
 
-void main() async {
+// Firebase main import
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  await Firebase.initializeApp();
+  runApp(Unreel());
 }
 
-class MyApp extends StatelessWidget {
+class Unreel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      systemNavigationBarColor: Colors.white,
-    ));
-
-    bool _loggedIn = checkLoggedStatus();
-    Widget _initScreen = Login();
-
-    if (_loggedIn) {
-      _initScreen = MainScreen();
-    }
-
-    return MaterialApp(
-      title: 'Unreel',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: AppTheme.textTheme,
-        platform: TargetPlatform.android,
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationService>(
+          create: (_) => AuthenticationService(FirebaseAuth.instance),
+        ),
+        StreamProvider(
+          create: (context) =>
+              context.read<AuthenticationService>().authStateChanges,
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Unreel Beta',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          textTheme: AppTheme.textTheme,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          platform: TargetPlatform.android,
+        ),
+        home: AuthenticationWrapper(),
       ),
-      home: _initScreen,
     );
-  }
-
-  bool checkLoggedStatus() {
-    // TODO Firebase integration
-    return false;
   }
 }
 
-class HexColor extends Color {
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+class AuthenticationWrapper extends StatelessWidget {
+  const AuthenticationWrapper({
+    Key key,
+  }) : super(key: key);
 
-  static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF' + hexColor;
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User>();
+
+    if (firebaseUser != null) {
+      return MainScreen();
     }
-    return int.parse(hexColor, radix: 16);
+    return Login();
   }
 }
