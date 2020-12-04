@@ -6,7 +6,7 @@ Unreel es una aplicación de Video On Demand (VOD) desarrollada en Dart y hacien
 
 Unreel es un proyecto de la Universidad Nacional de Colombia, desarrollado por:
 
- - Fabian Chaparro
+ - Fabian Chaparro - fchaparroa@unal.edu.co
  - Stifh Barragán
  - David Felipe Lancheros
  - Eduar Mauricio Mendez
