@@ -2,10 +2,10 @@ import 'dart:math' as math;
 import 'package:Unreel/src/logic/utils/utils.dart';
 import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:Unreel/src/logic/utils/fintness_app_theme.dart';
-import 'package:Unreel/src/views/bottom_navigation_view/tabIcon_data.dart';
+import 'package:Unreel/src/logic/utils/Icon_data.dart';
 import 'package:flutter/material.dart';
 
-import 'tabIcon_data.dart';
+import '../../logic/utils/Icon_data.dart';
 
 class BottomBarView extends StatefulWidget {
   const BottomBarView(

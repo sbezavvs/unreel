@@ -2,7 +2,6 @@ import 'package:Unreel/src/logic/model/auth_service.dart';
 import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 class Login extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -35,7 +34,7 @@ class Login extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.only(top: 5),
                     child: const Text(
-                      'Creative is better.',
+                      'Beta 1.0',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: AppTheme.nearlyWhite,
@@ -48,7 +47,7 @@ class Login extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 20),
                     child: Center(
                       child: Container(
-                        width: 120,
+                        width: MediaQuery.of(context).size.width - 64,
                         height: 40,
                         decoration: BoxDecoration(
                           color: AppTheme.unreel,
@@ -70,10 +69,10 @@ class Login extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
                                 child: Text(
-                                  'Entrar',
+                                  'Iniciar sesión',
                                   style: TextStyle(
                                     fontSize: 18,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -85,23 +84,55 @@ class Login extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                  ),
-                  Text(
-                    'Inicia con redes sociales',
-                    style: TextStyle(
-                        color: AppTheme.nearlyWhite,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10),
-                  ),
-                  SignInButton(
-                    Buttons.Google,
-                    text: 'Entrar con Google',
-                    onPressed: () {
-                      context.read<AuthenticationService>().signInWithGoogle();
-                    },
+                    padding: const EdgeInsets.only(top: 70),
+                    child: Center(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width - 64,
+                        height: 42,
+                        decoration: BoxDecoration(
+                          color: AppTheme.nearlyWhite,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                        ),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: InkWell(
+                              onTap: () {
+                                FocusScope.of(context)
+                                    .requestFocus(FocusNode());
+
+                                context
+                                    .read<AuthenticationService>()
+                                    .signInWithGoogle();
+                              },
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 10),
+                                  ),
+                                  Image.asset(
+                                    "assets/images/google-logo.png",
+                                    height: 35,
+                                  ),
+                                  Center(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(left: 42),
+                                      child: Text(
+                                        'Iniciar con Google',
+                                        style: TextStyle(
+                                          fontFamily: AppTheme.fontName,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                          color: AppTheme.grey,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),

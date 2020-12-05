@@ -3,6 +3,7 @@ import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:Unreel/src/views/main_screen.dart';
 import 'package:Unreel/src/views/login.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // Firebase main import
 
@@ -13,12 +14,17 @@ import 'package:provider/provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(Unreel());
 }
 
 class Unreel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
     return MultiProvider(
       providers: [
         Provider<AuthenticationService>(

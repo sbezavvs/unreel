@@ -1,4 +1,4 @@
-import 'package:Unreel/src/views/bottom_navigation_view/tabIcon_data.dart';
+import 'package:Unreel/src/logic/utils/Icon_data.dart';
 import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:Unreel/src/views/explore/explore_screen.dart';
 import 'package:Unreel/src/views/personal/personal_view.dart';

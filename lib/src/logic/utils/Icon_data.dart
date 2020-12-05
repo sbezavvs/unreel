@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+var gLogo = 'assets/images/icons/g_signin_light.png';
+
 class TabIconData {
   TabIconData({
     this.imagePath = '',

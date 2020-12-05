@@ -88,10 +88,8 @@ class _SocialState extends State<Social> {
                             color: Colors.transparent,
                             child: InkWell(
                               onTap: () {
-                                context.read<AuthenticationService>().signOut();
-
-                                // Share.share(
-                                //     '¿Cansado de las mismas series y películas? ¡Dale una oportunidad a los creadores independientes del país! Descarga Unreel y obtén acceso gratuito durante la Beta.');
+                                Share.share(
+                                    '¿Cansado de las mismas series y películas? ¡Dale una oportunidad a los creadores independientes del país! Descarga Unreel y obtén acceso gratuito durante la Beta.');
                               },
                               child: Center(
                                 child: Row(

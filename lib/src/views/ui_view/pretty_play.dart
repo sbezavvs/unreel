@@ -1,12 +1,27 @@
+import 'package:Unreel/src/logic/utils/app_theme.dart';
 import 'package:Unreel/src/logic/utils/utils.dart';
+import 'package:Unreel/src/views/video_player.dart';
 import 'package:flutter/material.dart';
-import '../../../src/logic/utils/fintness_app_theme.dart';
+import '../../logic/utils/fintness_app_theme.dart';
 
-class WorkoutView extends StatelessWidget {
+class PrettyPlay extends StatelessWidget {
   final AnimationController animationController;
   final Animation animation;
+  final String title;
+  final String author;
+  final String minutes;
+  final String image;
+  final String source;
 
-  const WorkoutView({Key key, this.animationController, this.animation})
+  const PrettyPlay(
+      {Key key,
+      this.animationController,
+      this.animation,
+      this.title,
+      this.author,
+      this.minutes,
+      this.image,
+      this.source})
       : super(key: key);
 
   @override
@@ -24,10 +39,8 @@ class WorkoutView extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    FitnessAppTheme.nearlyDarkBlue,
-                    HexColor("#6F56E8")
-                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                  image: DecorationImage(
+                      image: NetworkImage(image), fit: BoxFit.cover),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -47,7 +60,7 @@ class WorkoutView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Veritasium',
+                        author,
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: FitnessAppTheme.fontName,
@@ -60,7 +73,7 @@ class WorkoutView extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          'La Universidad Nacional: Desde el aire',
+                          title,
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: FitnessAppTheme.fontName,
@@ -91,7 +104,7 @@ class WorkoutView extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 4.0),
                               child: Text(
-                                '68 min',
+                                minutes,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: FitnessAppTheme.fontName,
@@ -105,26 +118,38 @@ class WorkoutView extends StatelessWidget {
                             Expanded(
                               child: SizedBox(),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: FitnessAppTheme.nearlyWhite,
-                                shape: BoxShape.circle,
-                                boxShadow: <BoxShadow>[
-                                  BoxShadow(
-                                      color: FitnessAppTheme.nearlyBlack
-                                          .withOpacity(0.4),
-                                      offset: Offset(8.0, 8.0),
-                                      blurRadius: 8.0),
-                                ],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(0.0),
-                                child: Icon(
-                                  Icons.arrow_right,
-                                  color: HexColor("#6F56E8"),
-                                  size: 44,
+                            GestureDetector(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: FitnessAppTheme.nearlyWhite,
+                                  shape: BoxShape.circle,
+                                  boxShadow: <BoxShadow>[
+                                    BoxShadow(
+                                        color: FitnessAppTheme.nearlyBlack
+                                            .withOpacity(0.4),
+                                        offset: Offset(8.0, 8.0),
+                                        blurRadius: 8.0),
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(0.0),
+                                  child: Icon(
+                                    Icons.arrow_right,
+                                    color: AppTheme.unreel,
+                                    size: 44,
+                                  ),
                                 ),
                               ),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => VideoPlayer(
+                                      videoSource: source,
+                                    ),
+                                  ),
+                                );
+                              },
                             )
                           ],
                         ),

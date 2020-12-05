@@ -17,16 +17,18 @@ class _AreaListViewState extends State<AreaListView>
     with TickerProviderStateMixin {
   AnimationController animationController;
   List<String> areaListData = <String>[
-    'assets/home/area1.png',
-    'assets/home/area2.png',
-    'assets/home/area3.png',
-    'assets/home/area1.png',
+    'assets/home/1.png',
+    'assets/home/2.png',
+    'assets/home/3.png',
+    'assets/home/4.png',
+    'assets/home/5.png',
+    'assets/home/6.png',
   ];
 
   @override
   void initState() {
     animationController = AnimationController(
-        duration: const Duration(milliseconds: 2000), vsync: this);
+        duration: const Duration(milliseconds: 500), vsync: this);
     super.initState();
   }
 

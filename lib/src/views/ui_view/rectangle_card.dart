@@ -5,8 +5,21 @@ import 'package:flutter/material.dart';
 class RectangleCard extends StatelessWidget {
   final AnimationController animationController;
   final Animation animation;
+  final String title;
+  final String description;
+  final String author;
+  final String date;
+  final String background;
 
-  const RectangleCard({Key key, this.animationController, this.animation})
+  const RectangleCard(
+      {Key key,
+      this.animationController,
+      this.animation,
+      this.title,
+      this.description,
+      this.author,
+      this.date,
+      this.background})
       : super(key: key);
 
   @override
@@ -24,7 +37,8 @@ class RectangleCard extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.unreel,
+                  image: DecorationImage(
+                      image: NetworkImage(background), fit: BoxFit.cover),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -72,7 +86,7 @@ class RectangleCard extends StatelessWidget {
                                         padding:
                                             const EdgeInsets.only(left: 4.0),
                                         child: Text(
-                                          'Today',
+                                          date,
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontFamily:
@@ -91,7 +105,7 @@ class RectangleCard extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                         top: 4, bottom: 14),
                                     child: Text(
-                                      'Autor',
+                                      author,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         fontFamily: AppTheme.fontName,
@@ -109,17 +123,17 @@ class RectangleCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 24, right: 24, top: 8, bottom: 8),
-                      child: Container(
-                        height: 2,
-                        decoration: BoxDecoration(
-                          color: AppTheme.white,
-                          borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                        ),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(
+                    //       left: 24, right: 24, top: 8, bottom: 8),
+                    //   child: Container(
+                    //     height: 2,
+                    //     decoration: BoxDecoration(
+                    //       color: AppTheme.white,
+                    //       borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                    //     ),
+                    //   ),
+                    // ),
                     Padding(
                       padding: const EdgeInsets.only(
                           left: 24, right: 24, top: 8, bottom: 16),
@@ -131,7 +145,7 @@ class RectangleCard extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Text(
-                                  'Título de la obra',
+                                  title,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontFamily: FitnessAppTheme.fontName,
@@ -144,8 +158,8 @@ class RectangleCard extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(top: 6),
                                   child: Text(
-                                    'Descripción corta...',
-                                    textAlign: TextAlign.center,
+                                    description,
+                                    textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: FitnessAppTheme.fontName,
                                       fontWeight: FontWeight.w600,
